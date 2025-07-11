@@ -19,7 +19,7 @@ export default function AppointmentForm({ onSubmit, onClose }: Props) {
 
   const [availableSlots, setAvailableSlots] = useState([]);
   const [showTimeSlots, setShowTimeSlots] = useState(false);
-
+}
   // Datos simulados de usuarios disponibles
  
 
