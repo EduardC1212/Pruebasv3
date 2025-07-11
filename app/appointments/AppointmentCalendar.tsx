@@ -1,6 +1,8 @@
 
 'use client';
 
+import { useState } from 'react';
+
 type Appointment = {
   id: string;
   date: string;
@@ -13,12 +15,10 @@ type Appointment = {
 type Props = {
   appointments: Appointment[];
 };
-import { useState } from 'react';
 
 export default function AppointmentCalendar({ appointments }: Props) {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-
 
   const monthNames = [
     'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
@@ -27,7 +27,7 @@ export default function AppointmentCalendar({ appointments }: Props) {
 
   const dayNames = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
 
-  const getDaysInMonth = (date) => {
+  const getDaysInMonth = (date: Date) => {
     const year = date.getFullYear();
     const month = date.getMonth();
     const firstDay = new Date(year, month, 1);
@@ -37,7 +37,6 @@ export default function AppointmentCalendar({ appointments }: Props) {
 
     const days = [];
 
-    // Días del mes anterior
     for (let i = startingDayOfWeek - 1; i >= 0; i--) {
       const prevMonthDay = new Date(year, month, -i);
       days.push({
@@ -47,7 +46,6 @@ export default function AppointmentCalendar({ appointments }: Props) {
       });
     }
 
-    // Días del mes actual
     for (let day = 1; day <= daysInMonth; day++) {
       const currentDay = new Date(year, month, day);
       days.push({
@@ -57,7 +55,6 @@ export default function AppointmentCalendar({ appointments }: Props) {
       });
     }
 
-    // Días del próximo mes para completar la grilla
     const remainingDays = 42 - days.length;
     for (let day = 1; day <= remainingDays; day++) {
       const nextMonthDay = new Date(year, month + 1, day);
@@ -71,16 +68,16 @@ export default function AppointmentCalendar({ appointments }: Props) {
     return days;
   };
 
-  const formatDate = (date) => {
+  const formatDate = (date: Date) => {
     return date.toISOString().split('T')[0];
   };
 
-  const getAppointmentsForDate = (date) => {
+  const getAppointmentsForDate = (date: Date) => {
     const dateStr = formatDate(date);
     return appointments.filter(apt => apt.date === dateStr);
   };
 
-  const navigateMonth = (direction) => {
+  const navigateMonth = (direction: number) => {
     const newDate = new Date(currentDate);
     newDate.setMonth(currentDate.getMonth() + direction);
     setCurrentDate(newDate);
