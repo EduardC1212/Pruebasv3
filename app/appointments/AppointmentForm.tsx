@@ -9,7 +9,7 @@ type Props = {
   onClose: () => void;
 };
 
-export default function AppointmentForm({ onSubmit, onClose }: Props)
+export default function AppointmentForm({ onSubmit, onClose }: Props) {
   const [formData, setFormData] = useState({
     person: '',
     date: '',
