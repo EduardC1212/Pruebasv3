@@ -1,9 +1,22 @@
 
 'use client';
+type Appointment = {
+  id: number;
+  date: string;
+  time: string;
+  participant: string;
+  reason: string;
+  status: string;
+};
+
+type Props = {
+  appointments: Appointment[];
+  setAppointments: React.Dispatch<React.SetStateAction<Appointment[]>>;
+};
 
 import { useState } from 'react';
 
-export default function AppointmentList({ appointments, setAppointments }) {
+export default function AppointmentList({ appointments, setAppointments }: Props) {
   const [filter, setFilter] = useState('todas');
   const [showEditModal, setShowEditModal] = useState(false);
   const [editingAppointment, setEditingAppointment] = useState(null);
