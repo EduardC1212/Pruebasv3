@@ -4,10 +4,15 @@
 type Appointment = {
   id: string;
   date: string;
-  user: string;
-  // agrega más campos si es necesario
+  time: string;
+  participant: string;
+  reason: string;
+  status: 'confirmada' | 'pendiente' | string;
 };
 
+type Props = {
+  appointments: Appointment[];
+};
 import { useState } from 'react';
 
 export default function AppointmentCalendar({ appointments }) {
