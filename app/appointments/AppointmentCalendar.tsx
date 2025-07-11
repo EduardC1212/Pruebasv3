@@ -15,9 +15,10 @@ type Props = {
 };
 import { useState } from 'react';
 
-export default function AppointmentCalendar({ appointments }) {
+export default function AppointmentCalendar({ appointments }: Props) {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+
 
   const monthNames = [
     'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
