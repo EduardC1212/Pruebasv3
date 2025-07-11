@@ -51,7 +51,7 @@ export default function AppointmentForm({ onSubmit, onClose }: Props) {
 
   const workers = availableUsers.map(user => ({ id: user.id, name: user.name, department: user.department }));
 
-  const generateTimeSlots = (date, person) => {
+  const generateTimeSlots = (date: string, person: string) => {
     if (!date || !person) return;
 
     const schedule = workSchedules[person];
