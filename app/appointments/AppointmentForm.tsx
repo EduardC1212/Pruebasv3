@@ -21,33 +21,13 @@ export default function AppointmentForm({ onSubmit, onClose }: Props) {
   const [showTimeSlots, setShowTimeSlots] = useState(false);
 
   // Datos simulados de usuarios disponibles
-  const availableUsers = [
-    { id: 1, name: 'Ana García', department: 'Marketing' },
-    { id: 2, name: 'Carlos López', department: 'Finanzas' },
-    { id: 3, name: 'María Rodríguez', department: 'Recursos Humanos' },
-    { id: 4, name: 'Juan Martínez', department: 'Desarrollo' },
-    { id: 5, name: 'Laura Sánchez', department: 'Ventas' }
-  ];
+ 
 
   // Datos simulados de horarios de trabajo por usuario
-  const workSchedules = {
-    'Ana García': { start: '09:00', end: '17:00', breaks: ['12:00-13:00'] },
-    'Carlos López': { start: '08:30', end: '16:30', breaks: ['12:30-13:30'] },
-    'María Rodríguez': { start: '09:30', end: '17:30', breaks: ['13:00-14:00'] },
-    'Juan Martínez': { start: '10:00', end: '18:00', breaks: ['14:00-15:00'] },
-    'Laura Sánchez': { start: '08:00', end: '16:00', breaks: ['12:00-13:00'] }
-  };
+ 
 
   // Citas existentes simuladas
-  const existingAppointments = {
-    'Ana García': [
-      { date: '2024-12-20', time: '10:00' },
-      { date: '2024-12-20', time: '15:30' }
-    ],
-    'Carlos López': [
-      { date: '2024-12-22', time: '11:00' }
-    ]
-  };
+ 
 
   const workers = availableUsers.map(user => ({ id: user.id, name: user.name, department: user.department }));
 
