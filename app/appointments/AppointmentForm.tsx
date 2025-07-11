@@ -4,7 +4,12 @@
 import { useState } from 'react';
 import { saveAppointment, getAllWorkers, getAvailableTimeSlots } from '../../lib/database';
 
-export default function AppointmentForm({ onSubmit, onClose }) {
+type Props = {
+  onSubmit: (data: any) => void; // puedes especificar mejor si sabes la estructura
+  onClose: () => void;
+};
+
+export default function AppointmentForm({ onSubmit, onClose }: Props)
   const [formData, setFormData] = useState({
     person: '',
     date: '',
@@ -87,7 +92,7 @@ export default function AppointmentForm({ onSubmit, onClose }) {
     setShowTimeSlots(true);
   };
 
-  const handleDateChange = (e) => {
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newDate = e.target.value;
     setFormData({ ...formData, date: newDate, time: '' });
 
@@ -96,7 +101,7 @@ export default function AppointmentForm({ onSubmit, onClose }) {
     }
   };
 
-  const handlePersonChange = (e) => {
+  const handlePersonChange = (e: React.ChangeEvent<HTMLSelectElement>)=> {
     const newPerson = e.target.value;
     setFormData({ ...formData, person: newPerson, time: '' });
 
@@ -105,7 +110,7 @@ export default function AppointmentForm({ onSubmit, onClose }) {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const selectedWorker = workers.find(w => w.name === formData.person);
