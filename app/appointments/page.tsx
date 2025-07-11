@@ -1,6 +1,13 @@
 
 'use client';
 
+type User = {
+  role: 'admin' | 'worker' | 'user';
+  // otros campos si los tienes
+};
+
+const [user, setUser] = useState<User | null>(null);
+
 import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import Navigation from '@/components/Navigation';
