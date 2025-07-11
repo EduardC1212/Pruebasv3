@@ -28,6 +28,14 @@ export default function AppointmentForm({ onSubmit, onClose }: Props) {
     { id: 5, name: 'Laura Sánchez', department: 'Ventas' }
   ];
 
+  const workers = availableUsers.map(user => ({
+    id: user.id,
+    name: user.name,
+    department: user.department
+  }));
+
+  
+
   const workSchedules: Record<string, { start: string, end: string, breaks: string[] }> = {
     'Ana García': { start: '09:00', end: '17:00', breaks: ['12:00-13:00'] },
     'Carlos López': { start: '08:30', end: '16:30', breaks: ['12:30-13:30'] },
@@ -46,11 +54,7 @@ export default function AppointmentForm({ onSubmit, onClose }: Props) {
     ]
   };
 
-  const workers = availableUsers.map(user => ({
-    id: user.id,
-    name: user.name,
-    department: user.department
-  }));
+  
 
   const generateTimeSlots = (date: string, person: string) => {
     if (!date || !person) return;
