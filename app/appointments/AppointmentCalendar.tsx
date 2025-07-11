@@ -1,6 +1,13 @@
 
 'use client';
 
+type Appointment = {
+  id: string;
+  date: string;
+  user: string;
+  // agrega más campos si es necesario
+};
+
 import { useState } from 'react';
 
 export default function AppointmentCalendar({ appointments }) {
